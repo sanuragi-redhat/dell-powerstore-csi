@@ -170,20 +170,10 @@ The environment consists of both physical bare-metal servers and virtual machine
 #### 4.2.1.2. Design Considerations
 
 * Red Hat OpenShift Container Platform 4.20 is the selected version for deployment across all six clusters.
-
-
 * F5 Load Balancer will provide dedicated API and Ingress VIPs for each cluster.
-
-
 * For cluster5 (Hosted Control Plane), MetalLB may be used to host the API VIP if the primary API VIP configuration is not available. The required IP address will be allocated from the cluster2 routable network.
-
-
 * Cluster names, DNS domains, API VIPs, Ingress VIPs, and networking details will be documented in dedicated prerequisite worksheets for each cluster.
-
-
 * A dedicated bastion host VM will be provisioned for cluster1, while a shared bastion host will be used for cluster3 and cluster4.
-
-
 * Cluster6 will serve as the disaster recovery (DR) environment for business continuity and resiliency requirements.
 
 
@@ -212,40 +202,24 @@ Other OpenShift setups documented in the prerequisites file are:
 
 | Name | IP Address Pool | Comments |
 | --- | --- | --- |
-| **Cluster Network** | 192.170.0.0/16 | Non Routable 
-
- |
-| **Service Network** | 192.176.0.0/20 | Non Routable 
-
- |
-| **Host Network** | 10.21.134.0/24 | Routable 
-
- |
+| **Cluster Network** | 192.170.0.0/16 | Non Routable |
+| **Service Network** | 192.176.0.0/20 | Non Routable |
+| **Host Network** | 10.21.134.0/24 | Routable  |
 
 #### 5.1.3.2. Network Services
 
 | Services | Host | Comments |
 | --- | --- | --- |
-| **DNS Server** | 10.158.5.88, 10.158.5.89, 10.120.5.127 | Nameserver IP for OCP nodes.
-
- |
-| **DHCP Server** | N/A | Static IPs will be used for OCP nodes.
-
- |
+| **DNS Server** | 10.158.5.88, 10.158.5.89, 10.120.5.127 | Nameserver IP for OCP nodes. |
+| **DHCP Server** | N/A | Static IPs will be used for OCP nodes. |
 
 #### 5.1.3.3. Load Balancer Config Details
 
 | VIP | URL | Port | Type |
 | --- | --- | --- | --- |
-| 10.21.134.16 | api.abfstclospcls1.bsli.com | 6443, 22623 | Passthrough (layer 4 routing) 
-
- |
-| 10.21.134.15 | api-int.abfstclospcls1.bsli.com | 6443, 22623 | Passthrough (layer 4 routing) 
-
- |
-| 10.21.134.14 | *.apps.abfstclospcls1.bsli.com | 443, 80 | Passthrough (layer 4 routing) 
-
- |
+| 10.21.134.16 | api.abfstclospcls1.bsli.com | 6443, 22623 | Passthrough (layer 4 routing)  |
+| 10.21.134.15 | api-int.abfstclospcls1.bsli.com | 6443, 22623 | Passthrough (layer 4 routing) |
+| 10.21.134.14 | *.apps.abfstclospcls1.bsli.com | 443, 80 | Passthrough (layer 4 routing)  |
 
 #### 5.1.3.4. Internet Access
 
@@ -255,71 +229,27 @@ The RHOCP-4.20.23 is a connected mode implementation where internet access is pr
 
 | Server FQDN | IP | Role | Subs Used | OS |
 | --- | --- | --- | --- | --- |
-| abfstclospc1n1.abfstclospcls1.bsli.com | 10.21.134.17
-
- | control plane, master, worker 
-
- | N/A | RHCOS 
-
- |
-| abfstclospc1n2.abfstclospcls1.bsli.com | 10.21.134.18
-
- | control plane, master, worker 
-
- | N/A | RHCOS 
-
- |
-| abfstclospc1n3.abfstclospcls1.bsli.com | 10.21.134.19
-
- | control plane, master, worker 
-
- | N/A | RHCOS 
-
- |
+| abfstclospc1n1.abfstclospcls1.bsli.com | 10.21.134.17 | control plane, master, worker  | N/A | RHCOS |
+| abfstclospc1n2.abfstclospcls1.bsli.com | 10.21.134.18 | control plane, master, worker  | N/A | RHCOS |
+| abfstclospc1n3.abfstclospcls1.bsli.com | 10.21.134.19 | control plane, master, worker  | N/A | RHCOS |
 
 #### 5.1.3.6. Storage Information
 
 | Application | Storage Type | CSI Driver | Mount Path | Size |
 | --- | --- | --- | --- | --- |
-| **Internal Registry** | File Object (S3 compatible) | Internal Image Registry | - | 100Gi 
-
- |
-| **Monitoring Prometheus** | Block | Dell CSI | prometheus | 200 GB (100x2) 
-
- |
-| **Monitoring Alert Manager** | Block | Dell CSI | user-prometheus-0 | 20 GB (10x2) 
-
- |
-| **LokiStack** | Block | Dell CSI | Compactor | 250 GB 
-
- |
-| **Logging** | Object (S3 compatible) | Dell Isilon Object | - | 200GB 
-
- |
-| **ETCD Backup** | External storage (any) | Backup NFS | - | 200GB 
-
- |
-| **ACM** | Block | Dell CSI | alertmanager | 200GB 
-
- |
-| **ACM** | Block | Dell CSI | thanos-compact | 200GB 
-
- |
-| **ACM** | Block | Dell CSI | thanos-receivey | 200GB 
-
- |
-| **ACM** | Block | Dell CSI | thanos-rule | 200GB 
-
- |
-| **ACM** | Block | Dell CSI | thanos-store | 200GB 
-
- |
-| **ACM** | Block | Dell CSI | redis | 200GB 
-
- |
-| **ACM** | Object (S3 compatible) | Dell CSI | Observability | 200GB 
-
- |
+| **Internal Registry** | File Object (S3 compatible) | Internal Image Registry | - | 100Gi |
+| **Monitoring Prometheus** | Block | Dell CSI | prometheus | 200 GB (100x2) |
+| **Monitoring Alert Manager** | Block | Dell CSI | user-prometheus-0 | 20 GB (10x2) |
+| **LokiStack** | Block | Dell CSI | Compactor | 250 GB |
+| **Logging** | Object (S3 compatible) | Dell Isilon Object | - | 200GB  |
+| **ETCD Backup** | External storage (any) | Backup NFS | - | 200GB |
+| **ACM** | Block | Dell CSI | alertmanager | 200GB |
+| **ACM** | Block | Dell CSI | thanos-compact | 200GB  |
+| **ACM** | Block | Dell CSI | thanos-receivey | 200GB  |
+| **ACM** | Block | Dell CSI | thanos-rule | 200GB |
+| **ACM** | Block | Dell CSI | thanos-store | 200GB |
+| **ACM** | Block | Dell CSI | redis | 200GB  |
+| **ACM** | Object (S3 compatible) | Dell CSI | Observability | 200GB  |
 
 #### 5.1.3.7. Certificates
 
