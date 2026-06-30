@@ -99,7 +99,7 @@ It looks like you are working on formatting the tables for the participants sect
 #### 2.5.2. ABG
 
 | Name | Role | Company | E-mail address |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | Deepak Dubey | Infrastructure Director | Aditya Birla Capital | deepak.dubey@adityabirlacapital.com |
 | Sandesh Saval | Project Manager | Aditya Birla Capital | sandesh.saval@adityabirlacapital.com |
 | Manish Patel | Sr. Technology Architect | Aditya Birla Capital | manish.patel@adityabirlacapital.com |
