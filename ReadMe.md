@@ -40,12 +40,9 @@ In the meantime, if there are any areas of concern, issues or problems on the pr
 
 ## 2. Project Information
 
-* 
-**Originator:** Red Hat Consulting 
+* **Originator:** Red Hat Consulting 
 
-
-* 
-**Owner:** Red Hat Services 
+* **Owner:** Red Hat Services 
 
 
 
@@ -55,12 +52,9 @@ In the meantime, if there are any areas of concern, issues or problems on the pr
 
 * ℹ️ Additional detail about a topic will be called out with the "info" symbol.
 
-
 * 💡 Tips and advice will appear with a "lightbulb" admonition.
 
-
 * ⚠️ Warnings and strong recommendations will appear next to a caution exclamation.
-
 
 * 🛑 Crucial advice and information will appear next to a red exclamation.
 
@@ -104,7 +98,7 @@ It looks like you are working on formatting the tables for the participants sect
 
 #### 2.5.2. ABG
 
-| Name | Role | Company / E-mail address |
+| Name | Role | Company | E-mail address |
 | --- | --- | --- |
 | Deepak Dubey | Infrastructure Director | Aditya Birla Capital | deepak.dubey@adityabirlacapital.com |
 | Sandesh Saval | Project Manager | Aditya Birla Capital | sandesh.saval@adityabirlacapital.com |
