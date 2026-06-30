@@ -88,6 +88,7 @@ end
 To request additional copies of this Consulting Engagement Report, please contact the Red Hat Project Manager identified in Participants of the Engagement section or your current Red Hat account team.
 
 ### 2.5. Participants of the Engagement
+It looks like you are working on formatting the tables for the participants section. Here are the clean, properly formatted Markdown tables for both **Red Hat** and **ABG** without the extraneous line breaks inside the cells:
 
 #### 2.5.1. Red Hat
 
@@ -105,24 +106,12 @@ To request additional copies of this Consulting Engagement Report, please contac
 
 | Name | Role | Company / E-mail address |
 | --- | --- | --- |
-| Deepak Dubey | Infrastructure Director | Aditya Birla Capital <br>
-
-<br> deepak.dubey@adityabirlacapital.com |
-| Sandesh Saval | Project Manager | Aditya Birla Capital <br>
-
-<br> sandesh.saval@adityabirlacapital.com |
-| Manish Patel | Sr. Technology Architect | Aditya Birla Capital <br>
-
-<br> manish.patel@adityabirlacapital.com |
-| Dinesh Rane | Principal Technology Architect | Aditya Birla Capital <br>
-
-<br> dinesh.rane1-v@adityabirlacapital.com |
-| Shared Service DCO | Sr. Technology Architect | Aditya Birla Capital <br>
-
-<br> sharedservices.dco@adityabirlacapital.com |
-| Pratap Sawant | Project Manager | Aditya Birla Capital <br>
-
-<br> pratap.sawant-v@adityabirlacapital.com |
+| Deepak Dubey | Infrastructure Director | Aditya Birla Capital | deepak.dubey@adityabirlacapital.com |
+| Sandesh Saval | Project Manager | Aditya Birla Capital | sandesh.saval@adityabirlacapital.com |
+| Manish Patel | Sr. Technology Architect | Aditya Birla Capital | manish.patel@adityabirlacapital.com |
+| Dinesh Rane | Principal Technology Architect | Aditya Birla Capital | dinesh.rane1-v@adityabirlacapital.com |
+| Shared Service DCO | Sr. Technology Architect | Aditya Birla Capital | sharedservices.dco@adityabirlacapital.com |
+| Pratap Sawant | Project Manager | Aditya Birla Capital | pratap.sawant-v@adityabirlacapital.com |
 
 ---
 
