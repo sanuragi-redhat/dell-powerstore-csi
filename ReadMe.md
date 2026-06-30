@@ -45,7 +45,6 @@ In the meantime, if there are any areas of concern, issues or problems on the pr
 * **Owner:** Red Hat Services 
 
 
-
 ### 2.3. Document Conventions
 
 #### 2.3.1. Admonitions and Call-Outs
