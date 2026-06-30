@@ -2,7 +2,7 @@
 
 ## ABG - OpenShift Container Platform 4.20.23 - Cluster1
 
-**Version:** 2.1
+**Version:** 1.0
 
 **Copyright:** © 2026 Red Hat, Inc. All Rights Reserved.
 
@@ -87,24 +87,14 @@ It looks like you are working on formatting the tables for the participants sect
 
 | Name | Role | E-mail address |
 | --- | --- | --- |
-| Misha Joshi | Sr. Director, Services | mijoshi@redhat.com |
-| Sushil More | Director, Services | sumore@redhat.com |
-| Anupam Arora | Consulting Services | anuarora@redhat.com |
-| Shailendra Hedaoo | Project Manager | shhedaoo@redhat.com |
-| Jatan Malde | Sr. Consultant | jmalde@redhat.com |
 | Sandeep Anuragi | Sr. Consultant | sanuragi@redhat.com |
-| Vaibhav Shelke | Consultant | vshelke@redhat.com |
+
 
 #### 2.5.2. ABG
 
 | Name | Role | Company | E-mail address |
 | --- | --- | --- | --- |
-| Deepak Dubey | Infrastructure Director | Aditya Birla Capital | deepak.dubey@adityabirlacapital.com |
-| Sandesh Saval | Project Manager | Aditya Birla Capital | sandesh.saval@adityabirlacapital.com |
-| Manish Patel | Sr. Technology Architect | Aditya Birla Capital | manish.patel@adityabirlacapital.com |
-| Dinesh Rane | Principal Technology Architect | Aditya Birla Capital | dinesh.rane1-v@adityabirlacapital.com |
-| Shared Service DCO | Sr. Technology Architect | Aditya Birla Capital | sharedservices.dco@adityabirlacapital.com |
-| Pratap Sawant | Project Manager | Aditya Birla Capital | pratap.sawant-v@adityabirlacapital.com |
+
 
 ---
 
@@ -116,40 +106,34 @@ Red Hat Consulting was engaged by ABG to assist in the implementation of Red Hat
 
 ## 4. Overview
 
-### 4.1. About Aditya Birla Group
+### 4.1. About Customer
 
-Aditya Birla Group is an Indian multinational conglomerate headquartered in Mumbai. The group's business interests include metals, cement, fashion and retail, financial services, renewables, fibre, textiles, chemicals, real estate, trading, mining, and entertainment. Red Hat Consulting was engaged by ABG to collaborate for their OpenShift 4 cluster deployment and Roadmap to meet the above needs.
+Customer is an Indian multinational conglomerate headquartered in Mumbai. The group's business interests include metals, cement, fashion and retail, financial services, renewables, fibre, textiles, chemicals, real estate, trading, mining, and entertainment. Red Hat Consulting was engaged by ABG to collaborate for their OpenShift 4 cluster deployment and Roadmap to meet the above needs.
 
 ### 4.2. Purpose and Engagement Approach
 
 > ℹ️ This design includes six Red Hat OpenShift Container Platform (OCP) 4.20 clusters deployed using a combination of Connected UPI Bare Metal, ACM Assisted Installer, and Hosted Control Plane (HCP) architectures.
 > 
-> 
+
 
 The environment consists of both physical bare-metal servers and virtual machine-based worker nodes, with cluster lifecycle management provided through Red Hat Advanced Cluster Management (ACM). Connectivity is established through enterprise proxy services, F5 load balancers, and dedicated API and Ingress VIPs for each cluster.
 
-#### 4.2.1. Business & Technical Objectives for Aditya Birla Group
+#### 4.2.1. Business & Technical Objectives for Customer
 
 * Deploy and manage six Red Hat OpenShift Container Platform (OCP) 4.20 clusters supporting multiple deployment architectures, including Connected UPI Bare Metal, ACM Assisted Installer, and Hosted Control Planes (HCP).
 
 
 * Establish a centralized cluster management platform using Red Hat Advanced Cluster Management (ACM) to simplify cluster provisioning, governance, lifecycle management, and observability.
 
-
 * Improve application testing, validation, and production rollout processes through standardized OpenShift platforms across development, testing, and production environments.
-
 
 * Enable scalable microservices-based application architectures with improved performance, resiliency, and operational efficiency.
 
-
 * Provide high availability through dedicated F5 Load Balancer VIPs for API and Ingress endpoints across all clusters.
-
 
 * Support both bare-metal and virtualized workloads, including Linux and Windows virtual machine hosting capabilities.
 
-
 * Establish a disaster recovery (DR) OpenShift environment to improve business continuity and operational resilience.
-
 
 * Enable future adoption of cloud-native, virtualization, and edge computing workloads through a consistent OpenShift platform strategy.
 
@@ -183,19 +167,19 @@ The environment consists of both physical bare-metal servers and virtual machine
 
 ### 5.1. Deployed Architecture
 
-Architecture and design for Aditya Birla Group is covered in the detailed design document (LLD) and should be referenced before proceeding further.
+Architecture and design for Customer is covered in the detailed design document (LLD) and should be referenced before proceeding further.
 
 #### 5.1.3. Environment Setup
 
-Steps to prepare or create the environment for the proposed architecture. This setup includes configuration for the production setup (`abfstclospcls1`). The only change with the production OpenShift setup includes the configuration of 3 master nodes which is a compact cluster. To collect network, DNS, load balancer, etc. configuration, refer to the `*ABG OCP - Pre req_Staging_v1.xlsx` file.
+Steps to prepare or create the environment for the proposed architecture. This setup includes configuration for the production setup (`ocpclusters1`). The only change with the production OpenShift setup includes the configuration of 3 master nodes which is a compact cluster. To collect network, DNS, load balancer, etc. configuration, refer to the `*ABG OCP - Pre req_Staging_v1.xlsx` file.
 
 Other OpenShift setups documented in the prerequisites file are:
 
-* cluster2 (`abfstclospcls2`)
-* cluster3 (`abfstclospcls3`)
-* cluster4 (`abfstclospcls4`)
-* cluster5 (`abfstclospcls5`)
-* cluster6 (`abfstclospcls6`)
+* cluster2 (`ocpclusters2`)
+* cluster3 (`ocpclusters3`)
+* cluster4 (`ocpclusters4`)
+* cluster5 (`ocpclusters5`)
+* cluster6 (`ocpclusters6`)
 
 #### 5.1.3.1. Network Information
 
@@ -203,22 +187,22 @@ Other OpenShift setups documented in the prerequisites file are:
 | --- | --- | --- |
 | **Cluster Network** | 192.170.0.0/16 | Non Routable |
 | **Service Network** | 192.176.0.0/20 | Non Routable |
-| **Host Network** | 10.21.134.0/24 | Routable  |
+| **Host Network** | 10.10.10.0/24 | Routable  |
 
 #### 5.1.3.2. Network Services
 
 | Services | Host | Comments |
 | --- | --- | --- |
-| **DNS Server** | 10.158.5.88, 10.158.5.89, 10.120.5.127 | Nameserver IP for OCP nodes. |
+| **DNS Server** | 10.10.10.88, 10.10.10.89, 10.10.10.90 | Nameserver IP for OCP nodes. |
 | **DHCP Server** | N/A | Static IPs will be used for OCP nodes. |
 
 #### 5.1.3.3. Load Balancer Config Details
 
 | VIP | URL | Port | Type |
 | --- | --- | --- | --- |
-| 10.21.134.16 | api.abfstclospcls1.bsli.com | 6443, 22623 | Passthrough (layer 4 routing)  |
-| 10.21.134.15 | api-int.abfstclospcls1.bsli.com | 6443, 22623 | Passthrough (layer 4 routing) |
-| 10.21.134.14 | *.apps.abfstclospcls1.bsli.com | 443, 80 | Passthrough (layer 4 routing)  |
+| 10.10.10.16 | api.ocpclusters1.babyshark.com | 6443, 22623 | Passthrough (layer 4 routing)  |
+| 10.10.10.15 | api-int.ocpclusters1.babyshark.com | 6443, 22623 | Passthrough (layer 4 routing) |
+| 10.10.10.14 | *.apps.ocpclusters1.babyshark.com | 443, 80 | Passthrough (layer 4 routing)  |
 
 #### 5.1.3.4. Internet Access
 
@@ -228,9 +212,9 @@ The RHOCP-4.20.23 is a connected mode implementation where internet access is pr
 
 | Server FQDN | IP | Role | Subs Used | OS |
 | --- | --- | --- | --- | --- |
-| abfstclospc1n1.abfstclospcls1.bsli.com | 10.21.134.17 | control plane, master, worker  | N/A | RHCOS |
-| abfstclospc1n2.abfstclospcls1.bsli.com | 10.21.134.18 | control plane, master, worker  | N/A | RHCOS |
-| abfstclospc1n3.abfstclospcls1.bsli.com | 10.21.134.19 | control plane, master, worker  | N/A | RHCOS |
+| abfstclospc1n1.ocpclusters1.babyshark.com | 10.10.10.17 | control plane, master, worker  | N/A | RHCOS |
+| abfstclospc1n2.ocpclusters1.babyshark.com | 10.10.10.18 | control plane, master, worker  | N/A | RHCOS |
+| abfstclospc1n3.ocpclusters1.babyshark.com | 10.10.10.19 | control plane, master, worker  | N/A | RHCOS |
 
 #### 5.1.3.6. Storage Information
 
@@ -252,7 +236,7 @@ The RHOCP-4.20.23 is a connected mode implementation where internet access is pr
 
 #### 5.1.3.7. Certificates
 
-Aditya Birla Group has planned to use self-signed certificates by their internal CA for Wild Card (`*.apps`) Domain Ingress Controller.
+Customer has planned to use self-signed certificates by their internal CA for Wild Card (`*.apps`) Domain Ingress Controller.
 
 ---
 
@@ -263,7 +247,7 @@ Aditya Birla Group has planned to use self-signed certificates by their internal
 #### 5.2.1.1. Operating System Details
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# cat /etc/redhat-release
+[root@BASTIONOCP ~]# cat /etc/redhat-release
 Red Hat Enterprise Linux 9.6 (Plow)
 
 ```
@@ -273,7 +257,7 @@ Red Hat Enterprise Linux 9.6 (Plow)
 Checking Disk Free details:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# df -h
+[root@BASTIONOCP ~]# df -h
 Filesystem                    Size  Used Avail Use% Mounted on
 devtmpfs                      4.0M     0  4.0M   0% /dev
 tmpfs                         7.7G   84K  7.7G   1% /dev/shm
@@ -297,7 +281,7 @@ tmpfs                         1.6G   40K  1.6G   1% /run/user/0
 Listing disks:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# lsblk
+[root@BASTIONOCP ~]# lsblk
 NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sda                       8:0    0  150G  0 disk 
 └─datavg-datalv         253:9    0  150G  0 lvm  /data
@@ -322,25 +306,25 @@ sr0                      11:0    1 11.9G  0 rom  /mnt
 Checking hostname and DNS configuration:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# hostname
-ABFSTCLBSTNPA1
+[root@BASTIONOCP ~]# hostname
+BASTIONOCP
 
-[root@ABFSTCLBSTNPA1 ~]# cat /etc/resolv.conf
+[root@BASTIONOCP ~]# cat /etc/resolv.conf
 # Generated by NetworkManager
-nameserver 10.158.5.88
-nameserver 10.158.5.89
-nameserver 10.120.5.127
+nameserver 10.10.10.88
+nameserver 10.10.10.89
+nameserver 10.10.10.90
 
 ```
 
 #### 5.2.1.3. Route and Default Gateway Details
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# ip r
+[root@BASTIONOCP ~]# ip r
 default via 10.21.6.1 dev eth0 proto static metric 100 
 10.21.6.0/24 dev eth0 proto kernel scope link src 10.21.6.95 metric 100 
 
-[root@ABFSTCLBSTNPA1 ~]# ip -br a
+[root@BASTIONOCP ~]# ip -br a
 lo               UNKNOWN        127.0.0.1/8 ::1/128 
 eth0             UP             10.21.6.95/24 
 
@@ -348,10 +332,10 @@ eth0             UP             10.21.6.95/24
 
 #### 5.2.1.4. Enabling Yum Repositories
 
-The Aditya Birla Group Team created a KVM with RHEL 9.4 with GUI install registered with the Red Hat CDN network via proxy.
+The Customer Team created a KVM with RHEL 9.4 with GUI install registered with the Red Hat CDN network via proxy.
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# yum repolist
+[root@BASTIONOCP ~]# yum repolist
 Updating Subscription Management repositories.
 repo id                          repo name
 rhel-9-for-x86_64-appstream-rpms Red Hat Enterprise Linux 9 for x86_64 - AppStream (RPMs)
@@ -362,11 +346,11 @@ rhel-9-for-x86_64-baseos-rpms    Red Hat Enterprise Linux 9 for x86_64 - BaseOS 
 #### 5.2.1.5. Checking OCP Binary Version
 
 ```bash
-[root@ABFSTCLBSTNPA1 Downloads]# oc version
+[root@BASTIONOCP Downloads]# oc version
 Client Version: 4.20.23
 Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
 
-[root@ABFSTCLBSTNPA1 Downloads]# openshift-install version
+[root@BASTIONOCP Downloads]# openshift-install version
 openshift-install 4.20.23
 built from commit 9598d638ef8acb62cb963b3a944a8bdced3840f3
 release image quay.io/openshift-release-dev/ocp-release@sha256:7aacace57ab6ec468dd98b0b3e0f3fc440b29afce21b90bd716fed0db487e9e9
@@ -377,24 +361,24 @@ release architecture amd64
 #### 5.2.1.6. Checking DNS Records
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# for a in 10.21.134.{17..19}; do dig -x $a +short ; done
-abfstclospc1n1.abfstclospcls1.bsli.com.
-abfstclospc1n2.abfstclospcls1.bsli.com.
-abfstclospc1n3.abfstclospcls1.bsli.com.
+[root@BASTIONOCP ~]# for a in 10.10.10.{17..19}; do dig -x $a +short ; done
+abfstclospc1n1.ocpclusters1.babyshark.com.
+abfstclospc1n2.ocpclusters1.babyshark.com.
+abfstclospc1n3.ocpclusters1.babyshark.com.
 
-[root@ABFSTCLBSTNPA1 ~]# for a in abfstclospc1n{1..3}.abfstclospcls1.bsli.com.; do dig $a +short ; done
-10.21.134.17
-10.21.134.18
-10.21.134.19
+[root@BASTIONOCP ~]# for a in abfstclospc1n{1..3}.ocpclusters1.babyshark.com.; do dig $a +short ; done
+10.10.10.17
+10.10.10.18
+10.10.10.19
 
 ```
 
 #### 5.2.1.7. SSH KeyGen
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# ssh-keygen
-[root@ABFSTCLBSTNPA1 ~]# cat .ssh/id_rsa.pub
-ssh-rsa REDACTED root@ABFSTCLBSTNPA1
+[root@BASTIONOCP ~]# ssh-keygen
+[root@BASTIONOCP ~]# cat .ssh/id_rsa.pub
+ssh-rsa REDACTED root@BASTIONOCP
 
 ```
 
@@ -414,11 +398,11 @@ The Agent-based installation comprises a bootable ISO that contains the Assisted
 ```yaml
 # install-config.yaml
 apiVersion: v1
-baseDomain: bsli.com
+baseDomain: babyshark.com
 proxy:
   httpProxy: http://185.46.212.88:80
   httpsProxy: http://185.46.212.88:443
-  noProxy: 10.21.134.0/24,.bsli.com,localhost,127.0.0.1
+  noProxy: 10.10.10.0/24,.babyshark.com,localhost,127.0.0.1
 compute:
 - name: worker
   replicas: 0
@@ -426,13 +410,13 @@ controlPlane:
   name: abfstclospc1n
   replicas: 3
 metadata:
-  name: abfstclospcls1
+  name: ocpclusters1
 networking:
   clusterNetwork:
   - cidr: 192.170.0.0/16
   hostPrefix: 23
   machineNetwork:
-  - cidr: 10.21.134.0/24
+  - cidr: 10.10.10.0/24
   networkType: OVNKubernetes
   serviceNetwork:
   - 192.171.0.0/16
@@ -440,7 +424,7 @@ platform:
   none: {}
 fips: false
 pullSecret: 'paste Pull Secret'
-sshKey: 'ssh-rsa REDACTED root@ABFSTCLBSTNPA1'
+sshKey: 'ssh-rsa REDACTED root@BASTIONOCP'
 
 ```
 
@@ -453,14 +437,14 @@ This configuration includes manifests for bond and VLAN interfaces with MTU 8500
 apiVersion: v1alpha1
 kind: AgentConfig
 metadata:
-  name: abfstclospcls1
-rendezvousIP: 10.21.134.17
+  name: ocpclusters1
+rendezvousIP: 10.10.10.17
 additionalNTPSources:
-- 10.158.5.88
-- 10.158.5.89
-- 10.120.5.127
+- 10.10.10.88
+- 10.10.10.89
+- 10.10.10.90
 hosts:
-  - hostname: abfstclospc1n1.abfstclospcls1.bsli.com
+  - hostname: abfstclospc1n1.ocpclusters1.babyshark.com
     role: abfstclospc1n
     rootDeviceHints:
       deviceName: "/dev/sda"
@@ -490,23 +474,23 @@ hosts:
         ipv4:
           enabled: true
           address:
-          - ip: 10.21.134.17
+          - ip: 10.10.10.17
             prefix-length: 24
           dhcp: false
         dns-resolver:
           config:
             server:
-            - 10.158.5.88
-            - 10.158.5.89
-            - 10.120.5.127
+            - 10.10.10.88
+            - 10.10.10.89
+            - 10.10.10.90
         routes:
           config:
           - destination: 0.0.0.0/0
-            next-hop-address: 10.21.134.1
+            next-hop-address: 10.10.10.1
             next-hop-interface: bond0.372
             table-id: 254
 
-  - hostname: abfstclospc1n2.abfstclospcls1.bsli.com
+  - hostname: abfstclospc1n2.ocpclusters1.babyshark.com
     role: abfstclospc1n
     rootDeviceHints:
       deviceName: "/dev/sda"
@@ -536,23 +520,23 @@ hosts:
         ipv4:
           enabled: true
           address:
-          - ip: 10.21.134.18
+          - ip: 10.10.10.18
             prefix-length: 24
           dhcp: false
         dns-resolver:
           config:
             server:
-            - 10.158.5.88
-            - 10.158.5.89
-            - 10.120.5.127
+            - 10.10.10.88
+            - 10.10.10.89
+            - 10.10.10.90
         routes:
           config:
           - destination: 0.0.0.0/0
-            next-hop-address: 10.21.134.1
+            next-hop-address: 10.10.10.1
             next-hop-interface: bond0.372
             table-id: 254
 
-  - hostname: abfstclospc1n3.abfstclospcls1.bsli.com
+  - hostname: abfstclospc1n3.ocpclusters1.babyshark.com
     role: abfstclospc1n
     rootDeviceHints:
       deviceName: "/dev/sda"
@@ -582,19 +566,19 @@ hosts:
         ipv4:
           enabled: true
           address:
-          - ip: 10.21.134.19
+          - ip: 10.10.10.19
             prefix-length: 24
           dhcp: false
         dns-resolver:
           config:
             server:
-            - 10.158.5.88
-            - 10.158.5.89
-            - 10.120.5.127
+            - 10.10.10.88
+            - 10.10.10.89
+            - 10.10.10.90
         routes:
           config:
           - destination: 0.0.0.0/0
-            next-hop-address: 10.21.134.1
+            next-hop-address: 10.10.10.1
             next-hop-interface: bond0.372
             table-id: 254
 
@@ -603,21 +587,21 @@ hosts:
 To initialize creation:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# mkdir ocp4 && cd ocp4/
-[root@ABFSTCLBSTNPA1 ocp4]# cp ../install-config.yaml ../agent-config.yaml .
+[root@BASTIONOCP ~]# mkdir ocp4 && cd ocp4/
+[root@BASTIONOCP ocp4]# cp ../install-config.yaml ../agent-config.yaml .
 
 ```
 
 #### 5.2.2.4. Create Agent ISO
 
 ```bash
-[root@ABFSTCLBSTNPA1 ocp4]# openshift-install agent create image
+[root@BASTIONOCP ocp4]# openshift-install agent create image
 INFO Configuration has 3 abfstclospc1n replicas, 0 arbiter replicas, and 0 worker replicas
-INFO The rendezvous host IP (node0 IP) is 10.21.134.17
+INFO The rendezvous host IP (node0 IP) is 10.10.10.17
 INFO Extracting base ISO from release payload
 INFO Generated ISO at agent.x86_64.iso.
 
-[root@ABFSTCLBSTNPA1 ocp4]# ls
+[root@BASTIONOCP ocp4]# ls
 agent.x86_64.iso   auth   rendezvousIP
 
 ```
@@ -625,23 +609,23 @@ agent.x86_64.iso   auth   rendezvousIP
 #### 5.2.2.5. Install Apache Web Server for Bootable Media URL
 
 ```bash
-[root@ABFSTCLBSTNPA1 ocp4]# yum install httpd -y
-[root@ABFSTCLBSTNPA1 ocp4]# mkdir -p /var/www/html/agent
-[root@ABFSTCLBSTNPA1 ocp4]# cp agent.x86_64.iso /var/www/html/agent/agent.iso
-[root@ABFSTCLBSTNPA1 ocp4]# chown apache:apache -R /var/www/html/agent/
-[root@ABFSTCLBSTNPA1 ocp4]# chmod 755 -R /var/www/html/agent/
-[root@ABFSTCLBSTNPA1 ocp4]# systemctl restart httpd
+[root@BASTIONOCP ocp4]# yum install httpd -y
+[root@BASTIONOCP ocp4]# mkdir -p /var/www/html/agent
+[root@BASTIONOCP ocp4]# cp agent.x86_64.iso /var/www/html/agent/agent.iso
+[root@BASTIONOCP ocp4]# chown apache:apache -R /var/www/html/agent/
+[root@BASTIONOCP ocp4]# chmod 755 -R /var/www/html/agent/
+[root@BASTIONOCP ocp4]# systemctl restart httpd
 
 ```
 
 #### 5.2.2.6. Waiting Bootkube Complete
 
 ```bash
-[root@ABFSTCLBSTNPA1 ocp4]# openshift-install agent wait-for bootstrap-complete --log-level=debug
+[root@BASTIONOCP ocp4]# openshift-install agent wait-for bootstrap-complete --log-level=debug
 ...
-INFO Host: abfstclospc1n1.abfstclospcls1.bsli.com, reached installation stage Joined
-INFO Host: abfstclospc1n3.abfstclospcls1.bsli.com, reached installation stage Waiting for bootkube
-INFO Host: abfstclospc1n2.abfstclospcls1.bsli.com, reached installation stage Done
+INFO Host: abfstclospc1n1.ocpclusters1.babyshark.com, reached installation stage Joined
+INFO Host: abfstclospc1n3.ocpclusters1.babyshark.com, reached installation stage Waiting for bootkube
+INFO Host: abfstclospc1n2.ocpclusters1.babyshark.com, reached installation stage Done
 INFO Bootstrap is complete
 INFO cluster bootstrap is complete
 
@@ -650,26 +634,26 @@ INFO cluster bootstrap is complete
 #### 5.2.2.7. Waiting for Installation Complete
 
 ```bash
-[root@ABFSTCLBSTNPA1 ocp4]# openshift-install agent wait-for install-complete --log-level=debug
+[root@BASTIONOCP ocp4]# openshift-install agent wait-for install-complete --log-level=debug
 ...
 INFO Cluster is installed
 INFO Install complete!
 INFO Login to the console with user: "kubeadmin", and password: "XXXXXXXXXXXXX"
 
-[root@ABFSTCLBSTNPA1 ~]# export KUBECONFIG=/root/ocp4/auth/kubeconfig
+[root@BASTIONOCP ~]# export KUBECONFIG=/root/ocp4/auth/kubeconfig
 
 ```
 
 #### 5.2.2.8. Cluster Status
 
 ```bash
-[root@ABFSTCLBSTNPA1 ocp4]# oc get nodes
+[root@BASTIONOCP ocp4]# oc get nodes
 NAME                                      STATUS   ROLES                         AGE   VERSION
-abfstclospc1n1.abfstclospcls1.bsli.com   Ready    control-plane,master,worker   15m   v1.33.11
-abfstclospc1n2.abfstclospcls1.bsli.com   Ready    control-plane,master,worker   44m   v1.33.11
-abfstclospc1n3.abfstclospcls1.bsli.com   Ready    control-plane,master,worker   45m   v1.33.11
+abfstclospc1n1.ocpclusters1.babyshark.com   Ready    control-plane,master,worker   15m   v1.33.11
+abfstclospc1n2.ocpclusters1.babyshark.com   Ready    control-plane,master,worker   44m   v1.33.11
+abfstclospc1n3.ocpclusters1.babyshark.com   Ready    control-plane,master,worker   45m   v1.33.11
 
-[root@ABFSTCLBSTNPA1 ~]# oc get clusterversion
+[root@BASTIONOCP ~]# oc get clusterversion
 NAME      VERSION   AVAILABLE   PROGRESSING   SINCE   STATUS
 version   4.20.23   True        False         7m48s   Cluster version is 4.20.23
 
@@ -694,7 +678,7 @@ version   4.20.23   True        False         7m48s   Cluster version is 4.20.23
 
 
 * 
-**Redirect URI:** `https://oauth-openshift.apps.abfstclospcls1.bsli.com/oauth2callback/CyberArk` 
+**Redirect URI:** `https://oauth-openshift.apps.ocpclusters1.babyshark.com/oauth2callback/CyberArk` 
 
 
 
@@ -761,8 +745,8 @@ Performs IPMI-based fencing operations using Lenovo XCC/BMC interfaces to manage
 #### 5.2.4.1.1. Verify Fence Agent Connectivity
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# yum install -y fence-agents-all
-[root@ABFSTCLBSTNPA1 ~]# fence_ipmilan -a 10.1.79.136 -l LENOVO -p Lenovo@123 -P -o status -u 623
+[root@BASTIONOCP ~]# yum install -y fence-agents-all
+[root@BASTIONOCP ~]# fence_ipmilan -a 10.1.79.136 -l LENOVO -p Lenovo@123 -P -o status -u 623
 Status: ON
 
 ```
@@ -770,8 +754,8 @@ Status: ON
 #### Apply Fencing Agents Remediation Template
 
 ```bash
-[root@ABFSTCLBSTNPA1 fencing]# oc apply -f fence-agent-credentials.yaml
-[root@ABFSTCLBSTNPA1 fencing]# oc apply -f far-template.yaml
+[root@BASTIONOCP fencing]# oc apply -f fence-agent-credentials.yaml
+[root@BASTIONOCP fencing]# oc apply -f far-template.yaml
 
 ```
 
@@ -787,9 +771,9 @@ spec:
     spec:
       agent: fence_ipmilan
       nodeparameters:
-        abfstclospc1n1.abfstclospcls1.bsli.com: 10.1.79.136
-        abfstclospc1n2.abfstclospcls1.bsli.com: 10.1.79.137
-        abfstclospc1n3.abfstclospcls1.bsli.com: 10.1.79.138
+        abfstclospc1n1.ocpclusters1.babyshark.com: 10.1.79.136
+        abfstclospc1n2.ocpclusters1.babyshark.com: 10.1.79.137
+        abfstclospc1n3.ocpclusters1.babyshark.com: 10.1.79.138
       remediationStrategy: OutOfServiceTaint
       retrycount: 5
       retryinterval: 5s
@@ -823,7 +807,7 @@ spec:
 Set storage profile default class:
 
 ```bash
-[root@ABFSTCLBSTNPA1 fencing]# oc patch storageclass powerstore -p '{"metadata": {"annotations": {"storageclass.kubernetes.io/is-powerstore": "true"}}}'
+[root@BASTIONOCP fencing]# oc patch storageclass powerstore -p '{"metadata": {"annotations": {"storageclass.kubernetes.io/is-powerstore": "true"}}}'
 storageclass.storage.k8s.io/powerstore patched
 
 ```
@@ -833,7 +817,7 @@ storageclass.storage.k8s.io/powerstore patched
 Map the OVN-Kubernetes secondary network to an Open vSwitch (OVS) bridge:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# oc apply -f br-ex.yaml
+[root@BASTIONOCP ~]# oc apply -f br-ex.yaml
 
 ```
 
@@ -877,8 +861,8 @@ spec:
 #### 5.2.6.1. Configuring OpenShift Monitoring with Persistent Storage
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# oc project openshift-monitoring
-[root@ABFSTCLBSTNPA1 monitoring]# oc apply -f cluster-monitor-config.yaml
+[root@BASTIONOCP ~]# oc project openshift-monitoring
+[root@BASTIONOCP monitoring]# oc apply -f cluster-monitor-config.yaml
 
 ```
 
@@ -911,8 +895,8 @@ data:
 #### 5.2.6.6. Apply LokiStack Configuration Manifests
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# oc create -f lokistack.yaml
-[root@ABFSTCLBSTNPA1 ~]# oc create -f clusterlogging.yaml
+[root@BASTIONOCP ~]# oc create -f lokistack.yaml
+[root@BASTIONOCP ~]# oc create -f clusterlogging.yaml
 
 ```
 
@@ -925,7 +909,7 @@ data:
 Create multipath configuration via MachineConfig:
 
 ```bash
-[root@ABFSTCLBSTNPA1 dell-csm]# oc apply -f 99-multipath-master.yaml
+[root@BASTIONOCP dell-csm]# oc apply -f 99-multipath-master.yaml
 
 ```
 
@@ -934,7 +918,7 @@ Create backend connectivity configuration properties layout:
 ```yaml
 # config.yaml
 arrays:
-  - endpoint: "https://10.158.5.226/api/rest"
+  - endpoint: "https://10.10.10.226/api/rest"
     globalID: "PRedHat259f17"
     username: "Username"
     password: "Passowrd"
@@ -944,9 +928,9 @@ arrays:
 ```
 
 ```bash
-[root@ABFSTCLBSTNPA1 dell-csm]# oc create secret generic powerstore-config --from-file=config=config.yaml -n powerstore
-[root@ABFSTCLBSTNPA1 dell-csm]# oc apply -f csm-config.yaml
-[root@ABFSTCLBSTNPA1 dell-csm]# oc apply -f sc-powerstore.yaml
+[root@BASTIONOCP dell-csm]# oc create secret generic powerstore-config --from-file=config=config.yaml -n powerstore
+[root@BASTIONOCP dell-csm]# oc apply -f csm-config.yaml
+[root@BASTIONOCP dell-csm]# oc apply -f sc-powerstore.yaml
 
 ```
 
@@ -954,7 +938,7 @@ arrays:
 
 ### 5.2.8. Configure Advanced Cluster Management (ACM) Observability
 
-#### Step 2: Create Thanos Object Storage Secret
+#### Create Thanos Object Storage Secret
 
 ```yaml
 apiVersion: v1
@@ -968,7 +952,7 @@ stringData:
     type: s3
     config:
       bucket: acmobservabilityclu1
-      endpoint: abcarchival.bsli.com:9020
+      endpoint: abcarchival.babyshark.com:9020
       insecure: true
       access_key: '2_BSLI\ss070631_accid'
       secret_key: 'suS13TMFaN1KEV3xXfDzcLCJLvXq'
@@ -976,8 +960,8 @@ stringData:
 ```
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# oc apply -f thanos-object-storage.yaml
-[root@ABFSTCLBSTNPA1 ~]# oc apply -f mco.yaml
+[root@BASTIONOCP ~]# oc apply -f thanos-object-storage.yaml
+[root@BASTIONOCP ~]# oc apply -f mco.yaml
 
 ```
 
@@ -988,7 +972,7 @@ stringData:
 Increase maximum scheduled capacity limit per combined control node:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# oc apply -f custom-max-pods.yaml
+[root@BASTIONOCP ~]# oc apply -f custom-max-pods.yaml
 
 ```
 
@@ -1009,7 +993,7 @@ spec:
 Verify enforcement verification check:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# oc get node abfstclospc1n1.abfstclospcls1.bsli.com -o jsonpath='{.status.capacity.pods}{"\n"}'
+[root@BASTIONOCP ~]# oc get node abfstclospc1n1.ocpclusters1.babyshark.com -o jsonpath='{.status.capacity.pods}{"\n"}'
 500
 
 ```
@@ -1021,17 +1005,14 @@ Verify enforcement verification check:
 Leverages Dell PowerScale (Isilon) backend platform strategy infrastructure mapping configuration specs:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# oc create secret generic image-registry-private-configuration-user \
-  --from-literal=REGISTRY_STORAGE_S3_ACCESSKEY=registryuser \
-  --from-literal=REGISTRY_STORAGE_S3_SECRETKEY='xxxxxxxxxxxx' \
-  -n openshift-image-registry
+[root@BASTIONOCP ~]# oc create secret generic image-registry-private-configuration-user --from-literal=REGISTRY_STORAGE_S3_ACCESSKEY=registryuser --from-literal=REGISTRY_STORAGE_S3_SECRETKEY='xxxxxxxxxxxx' -n openshift-image-registry
 
 ```
 
 Update Image Registry Management settings:
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# oc patch configs.imageregistry.operator.openshift.io cluster --type merge -p '{"spec":{"managementState":"Managed"}}'
+[root@BASTIONOCP ~]# oc patch configs.imageregistry.operator.openshift.io cluster --type merge -p '{"spec":{"managementState":"Managed"}}'
 
 ```
 
@@ -1044,8 +1025,8 @@ By default, etcd data is not encrypted in OpenShift Container Platform. You can 
 #### 5.2.16.1. ETCD Backup Using NFS Persistent Storage
 
 ```bash
-[root@ABFSTCLBSTNPA1 ~]# showmount -e
-Export list for ABFSTCLBSTNPA1:
+[root@BASTIONOCP ~]# showmount -e
+Export list for BASTIONOCP:
 /ocp_etcd *
 /nfs-iso  *
 
@@ -1054,20 +1035,20 @@ Export list for ABFSTCLBSTNPA1:
 Create backup namespaces and permissions mapping definitions:
 
 ```bash
-[root@ABFSTCLBSTNPA1 etcd-backup]# oc create -f 01-namespace.yaml
-[root@ABFSTCLBSTNPA1 etcd-backup]# oc create -f 02-cluster-role-etcd-bkp.yml
-[root@ABFSTCLBSTNPA1 etcd-backup]# oc create -f 03-cluster-role-binding-etcd-bkp.yml
-[root@ABFSTCLBSTNPA1 etcd-backup]# oc create -f 04-sa-etcd-bkp.yml
-[root@ABFSTCLBSTNPA1 etcd-backup]# oc adm policy add-scc-to-user privileged -z openshift-backup -n ocp-etcd-backup
+[root@BASTIONOCP etcd-backup]# oc create -f 01-namespace.yaml
+[root@BASTIONOCP etcd-backup]# oc create -f 02-cluster-role-etcd-bkp.yml
+[root@BASTIONOCP etcd-backup]# oc create -f 03-cluster-role-binding-etcd-bkp.yml
+[root@BASTIONOCP etcd-backup]# oc create -f 04-sa-etcd-bkp.yml
+[root@BASTIONOCP etcd-backup]# oc adm policy add-scc-to-user privileged -z openshift-backup -n ocp-etcd-backup
 
 ```
 
 Apply automated CronJob schema definition script map:
 
 ```bash
-[root@ABFSTCLBSTNPA1 etcd-backup]# oc create -f 05-cm-script.yaml
-[root@ABFSTCLBSTNPA1 etcd-backup]# oc create -f 06-etcd-nfs.yaml
-[root@ABFSTCLBSTNPA1 etcd-backup]# oc create -f 07-cron-job.yaml
+[root@BASTIONOCP etcd-backup]# oc create -f 05-cm-script.yaml
+[root@BASTIONOCP etcd-backup]# oc create -f 06-etcd-nfs.yaml
+[root@BASTIONOCP etcd-backup]# oc create -f 07-cron-job.yaml
 
 ```
 
@@ -1077,35 +1058,16 @@ Apply automated CronJob schema definition script map:
 
 ### Support Severity Level Definitions
 
-* 
-**Severity 1 (Urgent):** Your production system is severely impacted, or down, and your business operations are stopped.
-
-
+* **Severity 1 (Urgent):** Your production system is severely impacted, or down, and your business operations are stopped.
 * **Severity 2 (High):** The product is usable, but your business operations are severely restricted. No procedural workaround exists.
-
-
 * **Severity 3 (Medium):** The product is usable, with non-critical components or features affected. A workaround exists.
-
-
-* 
-**Severity 4 (Low):** General usage questions, documentation errors, or future enhancement suggestions.
+* **Severity 4 (Low):** General usage questions, documentation errors, or future enhancement suggestions.
 
 
 
 ### Tips to Create a Good Support Case
 
 1. Explicitly identify your specific accounts details and structural environment references inside descriptions fields.
-
-
 2. Provide precise keywords inside problem definitions descriptions summaries blocks (e.g. `Ceph...`, `Nova...`).
-
-
 3. Description formats should follow the format pattern convention:
-
-
-`[Component][Region] Issue description`
-
-*Example:* `[Nova][NL Region] Nova fails on one compute` 
-
-
 4. Always generate and append standard troubleshooting files mappings blocks updates output context (`sosreport`) to speed up cases handling cycles lifetimes timeline chains.
