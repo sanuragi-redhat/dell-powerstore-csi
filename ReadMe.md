@@ -1,5 +1,3 @@
----
-
 # Consulting Engagement Report
 
 ## ABG - OpenShift Container Platform 4.20.23 - Cluster1
